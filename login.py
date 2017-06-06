@@ -15,7 +15,6 @@ def md5Pass(password):
 
 def checkIfNameExists(user):
     text = open('data/users.txt', 'r').readlines()
-    print text
     for line in text:
         if line.split(",")[0] == user:
             return True
@@ -24,7 +23,6 @@ def checkIfNameExists(user):
 
 def authenticate(user, password):
     password = md5Pass(password + user)  # you can make this different, but still unique md5Pass(password+user)
-    print "Password: ", password
     text = open('data/users.txt', 'r').readlines()
     for line in text:
         line = line.strip().split(",")
@@ -81,13 +79,8 @@ def login(form):
     return result
 
 
-def notLoggedIn():
-    return '''You need to login, <a href="login.html">here</a>\n'''
-
-
 def main():
     form = cgi.FieldStorage()
-    body = ""
     if len(form) == 0:
         print open('render/login.html', 'r').read()
     else:
