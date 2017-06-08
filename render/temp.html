@@ -29,10 +29,10 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="page-scroll" href="./profile.py/%secure_fields%">Profile</a>
+                    <a class="page-scroll" href="./profile.py/?user=jasch&magicnumber=8851722">Profile</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="./logout.py/%secure_fields%">Logout</a>
+                    <a class="page-scroll" href="./logout.py/?user=jasch&magicnumber=8851722">Logout</a>
                 </li>
             </ul>
         </div>
@@ -40,12 +40,39 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
-<form method = "POST" action="post.py">
-    <input type = "text" name = "body" placeholder="What do you want to say?"/>
-    <input type = "hidden" name = "user" value = "%user%"/>
-    <input type = "hidden" name = "magicnumber" value = "%auth_number%"/>
-    <input type = "submit" value = "Post"/>
+<form method="POST" action="post.py">
+    <input type="text" name="body" placeholder="What do you want to say?"/>
+    <input type="hidden" name="user" value="jasch"/>
+    <input type="hidden" name="magicnumber" value="8851722"/>
+    <input type="submit" value="Post"/>
 </form>
-<!--POSTS-->
+
+<div class="post">
+    <a href="profile.py/?user=jasch'"><span class="name">Jared Asch
+</span>jasch</a>
+    <div class="post-body">
+        <p class="post-content">Hello World
+        </p>
+    </div>
+</div>
+
+<div class="post">
+    <a href="profile.py/?user=jasch'"><span class="name">Jared Asch
+</span>jasch</a>
+    <div class="post-body">
+        <p class="post-content">Hello Calvin
+        </p>
+    </div>
+</div>
+
+<div class="post">
+    <a href="profile.py/?user=jasch'"><span class="name">Jared Asch
+</span>jasch</a>
+    <div class="post-body">
+        <p class="post-content">Hi Calvin
+        </p>
+    </div>
+</div>
+
 </body>
 </html>

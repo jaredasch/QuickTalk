@@ -43,18 +43,38 @@ def secure_fields():
     return ""
 
 
+def name_from_username(username):
+    posts = open('data/users.txt', 'r').readlines()
+    for i in posts:
+        if i.split(',')[0] == username:
+            return i.split(',')[2]
+
+
+def build_post(user, content):
+    return '''
+        <div class = "post">
+            <a href ="profile.py/?user=''' + user + ''''">''' + '<span class = "name">' + name_from_username(user) + '</span>' + user + '''</a>
+            <div class = "post-body">
+                <p class = "post-content">''' + content + '''</p>
+            </div>
+        </div>
+    '''
+
+
 def update_posts():
     html = ''
     posts = open('data/posts.txt', 'r').readlines()
-    for i in posts:
-        html += '<p>' + i.split(',', 1)[1] + ' --- ' + i.split(',', 1)[0] + '</p></br>'
+    for i in posts[::-1]:
+        user = i.split(',', 1)[0]
+        content = i.split(',', 1)[1]
+        html += build_post(user, content)
     return html
 
 
 def main():
     is_logged_in = authenticate()
     if not is_logged_in:
-        print open('render/login.html', 'r').read()
+        print '<meta http-equiv="refresh" content="0; url=./login.py" />'
     else:
         name = secure_fields().split('&')[0].split('=')[1]
         number = secure_fields().split('&')[1].split('=')[1]

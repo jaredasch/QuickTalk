@@ -9,9 +9,16 @@ cgitb.enable()
 form = cgi.FieldStorage()
 
 
+def name_from_username(username):
+    posts = open('data/posts.txt', 'r').readlines()
+    for i in posts:
+        if i.split(',', 1)[0] == username:
+            return i.split(',')[1]
+
 def post(data):
     body = data['body'].value
     user = data['user'].value
+
     file = open('data/posts.txt', 'a')
     file.write(user + ',' + body + '\n')
     file.close()
@@ -48,12 +55,6 @@ def update_posts():
 
 def main():
     post(form)
-    name = secure_fields().split('&')[0].split('=')[1]
-    number = secure_fields().split('&')[1].split('=')[1]
-    template = open('render/home.html', 'r').read()
-    template = template.replace('%secure_fields%', secure_fields()).replace('%auth_number%', number).replace('%user%',name)
-    template = template.replace('<!--POSTS-->', update_posts())
-    print template
-
+    print '<meta http-equiv="refresh" content="0; url=./home.py' + secure_fields() + '" />'
 
 main()

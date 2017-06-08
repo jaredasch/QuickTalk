@@ -66,17 +66,16 @@ def logInUser(username):
 def login(form):
     result = ""
     if not ('user' in form and 'pass' in form):
-        return "Username or password not provided"
+        return open('render/login.html', 'r').read().replace('<!--ERRORS-->', '<p class = "error">Username or password not provided</p>')
     user = form['user'].value
     password = form['pass'].value
     if authenticate(user, password):
         result += "Success!<br>\n"
         magicNumber = logInUser(user)
-        result += '<a href="home.py?user=' + user + '&magicnumber=' + str(
-            magicNumber) + '">Click here to go to the main site!</a>'
+        return '<meta http-equiv="refresh" content="0; url=./home.py?user=' + user + '&magicnumber=' + str(
+            magicNumber) + '" />'
     else:
-        result += "Failed to log in, authentication failure"
-    return result
+        return open('render/login.html', 'r').read().replace('<!--ERRORS-->', '<p class = "error">Username or password incorrect</p>')
 
 
 def main():

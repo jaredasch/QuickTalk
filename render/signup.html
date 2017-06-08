@@ -1,16 +1,16 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>QuickTalk</title>
+    <title>Sign Up</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
           rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
           rel='stylesheet' type='text/css'>
     <!--Need one for local and one for clyde-->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/signup.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/signup.css">
 </head>
 
 <body>
@@ -29,10 +29,10 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="page-scroll" href="./profile.py/%secure_fields%">Profile</a>
+                    <a class="page-scroll" href="./signup.py">Sign Up</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="./logout.py/%secure_fields%">Logout</a>
+                    <a class="page-scroll" href="./login.py">Login</a>
                 </li>
             </ul>
         </div>
@@ -40,12 +40,15 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
-<form method = "POST" action="post.py">
-    <input type = "text" name = "body" placeholder="What do you want to say?"/>
-    <input type = "hidden" name = "user" value = "%user%"/>
-    <input type = "hidden" name = "magicnumber" value = "%auth_number%"/>
-    <input type = "submit" value = "Post"/>
+<h3>Login</h3>
+<form action="./signup.py">
+    <!--ERRORS-->
+    <input type="text" name="name" placeholder="Name">
+    <input type="text" name="user"  placeholder="Username">
+    <input type="password" name="pass" placeholder="Password">
+    <input type="password" name="pass2" placeholder="Confirm Password">
+    <input type="submit" name="status" value="Sign Up">
+    <p> If you already have an account, <a href="./login.py">log in</a>. </p>
 </form>
-<!--POSTS-->
 </body>
 </html>

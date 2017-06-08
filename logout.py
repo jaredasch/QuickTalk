@@ -48,15 +48,15 @@ def processForm(form):
     return "You must be logged in properly to log out!<br>\n"
 
 def notLoggedIn():
-    return "You must be loggedin before trying to log out!<br>\n"
+    return "You must be logged in before trying to log out!<br>\n"
 
 def main():
     form = cgi.FieldStorage()
     body = ""
     if len(form)==0:
-        body += notLoggedIn()
+        print open('render/login.html', 'r').read()
     else:
-        body += processForm(form)
-    print header() + body + footer()
+        processForm(form)
+        print '<meta http-equiv="refresh" content="0; url=./login.py" />'
 
 main()
